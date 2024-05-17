@@ -21,6 +21,10 @@ public class Contact {
         this.email = email;
     }
     
+    public String getName() {
+        return firstName;
+    }
+
     @Override
     public String toString() {
         return "Contact["+"firstName='"+firstName + '\'' +
@@ -55,9 +59,12 @@ public class Contact {
         Scanner scan = new Scanner(System.in);
         AddressBook addBook = new AddressBook();
         addBook.addContact(newConnection(scan));
+        System.out.print("Enter the name of the contact you want to update: ");
+        String toupdate_name = scan.nextLine();
+        Contact updated = newConnection(scan);
+        addBook.editeContact(toupdate_name, updated);
         addBook.displayContacts();
         scan.close();
     }
 
 }
-
