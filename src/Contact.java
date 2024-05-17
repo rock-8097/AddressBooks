@@ -57,12 +57,19 @@ public class Contact {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        //new addressbook created
         AddressBook addBook = new AddressBook();
+        // new contact
         addBook.addContact(newConnection(scan));
+        // update contact
         System.out.print("Enter the name of the contact you want to update: ");
         String toupdate_name = scan.nextLine();
         Contact updated = newConnection(scan);
         addBook.editeContact(toupdate_name, updated);
+        // delete contact
+        System.out.print("Enter the name of the contact you want to update: ");
+        String todelete = scan.nextLine();
+        addBook.deleteContact(todelete);
         addBook.displayContacts();
         scan.close();
     }
