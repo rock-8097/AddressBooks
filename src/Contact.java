@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Contact {
     private String firstName;
     private String lastName;
@@ -23,18 +25,38 @@ public class Contact {
     public String toString() {
         return "Contact["+"firstName='"+firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
+                ", address='" + address + '\'' +", city='" + city + '\'' +
+                ", state='" + state + '\'' +", zip='" + zip + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +']';
+                ", email='" + email + '\'' +']'+"......";
+    }
+    public static Contact newConnection(Scanner scanner) {
+        System.out.println("Enter contact details:");
+        System.out.print("First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Address: ");
+        String address = scanner.nextLine();
+        System.out.print("City: ");
+        String city = scanner.nextLine();
+        System.out.print("State: ");
+        String state = scanner.nextLine();
+        System.out.print("Zip: ");
+        String zip = scanner.nextLine();
+        System.out.print("Phone Number: ");
+        String phone = scanner.nextLine();
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+        return new Contact(firstName, lastName, address, city, state, zip, phone, email);
     }
 
     public static void main(String[] args) {
-        Contact contact1 = new Contact("Harshad", "Tembhe", "123 Main St", "panvel", "maha", "12345", "123-456-7890", "john@example.com");
-        System.out.println(contact1);
-        
+        Scanner scan = new Scanner(System.in);
+        AddressBook addBook = new AddressBook();
+        addBook.addContact(newConnection(scan));
+        addBook.displayContacts();
+        scan.close();
     }
 
 }
